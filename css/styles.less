@@ -1,0 +1,92 @@
+/* Navigation style */
+.nav {
+	ul {			
+	    margin: 0;
+	    padding: 0;
+	    list-style: none;	      
+	    border-bottom: 1px solid rgb(187, 188, 190);
+	    font-size: 1.2em;
+	    text-align: center;
+	    background: rgb(243, 244, 245);	   
+	}
+
+	li{
+		display: inline-block;
+		margin: 0 0.5em;
+	}
+
+	a{
+		display: block; 
+		padding: 0.8em;
+		color: rgb(87, 87, 88); 		 
+		text-decoration: none;
+				
+		&:hover{
+			background: darken(rgb(243, 244, 245),10%);	
+		}
+	}
+} 
+
+/* Styling the toggle menu link and hiding it */
+.nav .navtoogle {
+    display: none;  
+    width: 100%;
+    padding: 0.5em 0.5em 0.8em;
+    text-align: left;
+    font-size: 1.2em;
+    background: none;   
+    border: none;
+    border-bottom: 2px solid rgb(221, 221, 221);
+    cursor: pointer;
+    
+    &:before{
+    	content: '\2630';
+    	padding-right: 0.5em;
+    	font-size: 1.2em;
+    }
+}
+
+@media (max-width: 600px) {
+	.nav {
+		li {
+			margin: 0;
+			display: block;
+			text-align: left;
+		}
+		a{
+			padding: 0.8em 1.2em 0.8em;
+		}
+	}
+
+    .js .nav {
+    	/* Unhiding the styled menu link */
+    	.navtoogle {
+        	margin: 0;
+        	display: block;
+    	}
+
+    	/* When JavaScript is enabled, we hide the menu */
+    	ul {
+			max-height: 0em;
+	    	overflow: hidden;
+		}
+
+		.active + ul {
+			max-height: 30em;
+			overflow: hidden;
+			-webkit-transition: max-height .4s;
+			-moz-transition: max-height .4s;
+			-o-transition: max-height .4s;
+			-ms-transition: max-height .4s;
+			transition: max-height .4s;
+		}
+	}
+	
+    /* If JavaScript is disabled, the menu stays open */
+	.no-js .nav ul {
+		max-height: 30em;
+		overflow: hidden;
+	}
+
+}
+ 

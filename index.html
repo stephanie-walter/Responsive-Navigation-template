@@ -1,0 +1,73 @@
+<!doctype html>
+<!--[if lte IE 6]> <html class="no-js ie6 ie67 ie678" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="no-js ie7 ie67 ie678" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="no-js ie8 ie678" lang="en"> <![endif]-->
+<!--[if gt IE 8]> <!--><html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=10">
+		<title>Responsive navigation</title>
+		<meta name="viewport" content="initial-scale=1.0">
+		<link rel="stylesheet" href="http://necolas.github.io/normalize.css/2.1.2/normalize.css" media="all">
+		<link rel="stylesheet" href="css/styles.css" media="all">
+</head>
+<body>
+
+	<nav id="navigation" class="nav" role="navigation" onclick="">
+		<ul>
+			<li class="current"><a href="#">Croissant</a></li>
+			<li><a href="#">Fruitcake</a></li>
+			<li><a href="#">Chocolate</a></li>
+			<li><a href="#">Jelly beans</a></li>
+			<li><a href="#">Cookie</a></li>
+		</ul>
+	</nav>
+
+	<h2> Responsive Navigation template </h2>
+		<ul>
+		  <li> Fallback when no JS is activated </li>
+		  <li> Vanilla JS </li>
+		  <li> Clean markup </li>
+		  <li> To close you can click on "menu" or outsite the navigation </li>
+		</ul>
+
+<script>
+
+	//  The function to change the class
+	var changeClass = function (r,className1,className2) {
+	    var regex = new RegExp("(?:^|\\s+)" + className1 + "(?:\\s+|$)");
+	    if( regex.test(r.className) ) {
+	        r.className = r.className.replace(regex,' '+className2+' ');
+	    }
+	    else{
+	        r.className = r.className.replace(new RegExp("(?:^|\\s+)" + className2 + "(?:\\s+|$)"),' '+className1+' ');
+	    }
+	    return r.className;
+	};  
+ 
+	//  Creating our button for smaller screens
+	var menuElements = document.getElementById('navigation');
+	var htmlElement = document.getElementsByTagName("html")[0]
+	menuElements.insertAdjacentHTML('afterBegin','<button type="button" id="menutoggle" class="navtoogle" aria-hidden="true">Menu</button>');
+	// Adding a JS class when JS is activated
+	changeClass(document.getElementsByTagName("html")[0], 'no-js', 'js');
+	 
+	//  Toggle the class on click to show / hide the menu
+	document.getElementById('menutoggle').onclick = function() {
+	    changeClass(this, 'navtoogle active', 'navtoogle');
+	}
+	 
+	// document click to hide the menu	
+	document.onclick = function(e) {
+	    var mobileButton = document.getElementById('menutoggle'),
+	        buttonStyle =  mobileButton.currentStyle ? mobileButton.currentStyle.display : getComputedStyle(mobileButton, null).display;
+	 
+	    if(buttonStyle === 'block' && e.target !== mobileButton && new RegExp(' ' + 'active' + ' ').test(' ' + mobileButton.className + ' ')) {
+	        changeClass(mobileButton, 'navtoogle active', 'navtoogle');
+	    }
+	}
+
+</script>
+
+</body>
+</html>
