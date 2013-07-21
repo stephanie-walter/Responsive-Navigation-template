@@ -12,12 +12,12 @@
 
 	li{
 		display: inline-block;
-		margin: 0 0.5em;
+		margin: 0 .5em;
 	}
 
 	a{
 		display: block; 
-		padding: 0.8em;
+		padding: .8em .6em;
 		color: rgb(87, 87, 88); 		 
 		text-decoration: none;
 				
@@ -31,7 +31,7 @@
 .nav .navtoogle {
     display: none;  
     width: 100%;
-    padding: 0.5em 0.5em 0.8em;
+    padding: .5em .5em .8em;
     text-align: left;
     font-size: 1.2em;
     background: none;   
@@ -41,12 +41,13 @@
     
     &:before{
     	content: '\2630';
-    	padding-right: 0.5em;
+    	padding-right: .5em;
     	font-size: 1.2em;
     }
 }
 
-@media (max-width: 600px) {
+/* The breakpoint here will depend on your content, menu lenght, font size, and so on :) */
+@media (max-width: 680px) {
 	.nav {
 		li {
 			margin: 0;
@@ -54,7 +55,7 @@
 			text-align: left;
 		}
 		a{
-			padding: 0.8em 1.2em 0.8em;
+			padding: .8em 1.2em .8em;
 		}
 	}
 
